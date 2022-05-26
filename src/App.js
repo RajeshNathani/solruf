@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Container } from 'react-bootstrap'
+import Dashboard from './components/Dashboard'
+import Signup from './components/Signup'
+import { useAuth } from './firebase'
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Loginpage from './routes/Loginpage'
 
-function App() {
+const App = () => {
+  
+  const user = useAuth();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      
+      <Container className='d-flex align-items-center justify-content-center' style={{minHeight: '100vh'}}>
+        
+        {user?(
+          <Dashboard user={user}></Dashboard>
+        ):
+        (
+        <div className='w-100' style={{maxWidth : '400px'}}>
+          <Signup/>
+        </div>
+      )}
+        
+      </Container>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
