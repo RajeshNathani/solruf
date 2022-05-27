@@ -46,7 +46,9 @@ export function signin(email, password){
 export async function upload(currentUser, file, setLoading,name){
     const fileRef = ref(storage, currentUser.uid+'.png')
     setLoading(true)
-    const snapshot = await uploadBytes(fileRef, file)
+    if(file !== null){
+        const snapshot = await uploadBytes(fileRef, file)
+    }
     const photoURL = await getDownloadURL(fileRef);
     updateProfile(currentUser, {
         displayName: name, photoURL
