@@ -45,19 +45,18 @@ export function signin(email, password){
 
 export async function upload(currentUser, file, setLoading,name){
     const fileRef = ref(storage, currentUser.uid+'.png')
-    alert(currentUser.email)
     setLoading(true)
     const snapshot = await uploadBytes(fileRef, file)
     const photoURL = await getDownloadURL(fileRef);
     updateProfile(currentUser, {
         displayName: name, photoURL
       }).then(() => {
-        alert(currentUser.photoURL)
+        //
       }).catch((error) => {
         alert(error)
       });    
       setLoading(false)
-    alert("uploaded")
+    alert("Profile Updated")
 }
 export default app;
 
