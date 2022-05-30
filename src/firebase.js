@@ -55,8 +55,7 @@ export async function upload(currentUser, file, setLoading,name){
       }).then(() => {
         //
       }).catch((error) => {
-        alert(error)
-      });    
+=      });    
       setLoading(false)
     alert("Profile Updated")
     window.location.reload();
