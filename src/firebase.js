@@ -59,6 +59,7 @@ export async function upload(currentUser, file, setLoading,name){
       });    
       setLoading(false)
     alert("Profile Updated")
+    window.location.reload(false);
 }
 export default app;
 
