@@ -56,7 +56,7 @@ export async function upload(currentUser, file, setLoading,name){
         //
       }).catch((error) => {
         console.log(error)
-=      });    
+      });    
       setLoading(false)
     alert("Profile Updated")
     window.location.href = "/";
